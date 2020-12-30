@@ -1,18 +1,25 @@
 {
   "name": "sample-autoupdate",
   "version": "1.0.0",
-  "description": "Electron sample",
+  "description": "Electron auto update sample",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
     "build-mac": "electron-builder --mac --x64",
+    "build-mac-publish":"electron-builder --mac --x64 --publish always",
     "build-win": "electron-builder --win --x64"
   },
   "author": "M.Katsube",
   "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "electron-log": "^4.3.1",
+    "electron-notarize": "^1.0.0",
+    "electron-updater": "^4.3.5"
+  },
   "devDependencies": {
-    "electron": "^10.1.2",
-    "electron-builder": "^22.8.1"
+    "electron": "^10.2.0",
+    "electron-builder": "^22.9.1"
   },
   "build": {
     "appId": "net.makitokatsube.app.autoupdate",
@@ -23,11 +30,21 @@
       "index.html"
     ],
     "mac": {
-      "target": "dmg",
+      "target": ["zip", "dmg"],
       "hardenedRuntime": true,
       "gatekeeperAssess": false,
       "entitlements": "build/entitlements.mac.plist",
-      "entitlementsInherit": "build/entitlements.mac.plist"
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "publish": [
+        {
+          "provider": "s3",
+          "bucket": "electron.blog.katsubemakito.net",
+          "region": "ap-northeast-1",
+          "acl":"public-read",
+          "storageClass": "STANDARD",
+          "path": "/darwin/"
+        }
+      ]
     },
     "dmg": {
       "sign": false
@@ -35,9 +52,5 @@
     "win": {
       "target": "nsis"
     }
-  },
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "electron-notarize": "^1.0.0"
   }
 }

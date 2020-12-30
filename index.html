@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <title>autoUpdate sample</title>
+  <style>
+    body{background-color: white;}
+  </style>
+</head>
+<body>
+
+  <h1></h1>
+
+<script>
+  const {app, dialog} = require('electron').remote;
+  const version = app.getVersion();    // 現在のバージョン情報を取得(package.json)
+
+  // h1タグにバージョンを入れる
+  document.querySelector("h1").textContent = version;
+</script>
+</body>
 </html>
