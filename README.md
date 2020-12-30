@@ -26,3 +26,9 @@ $ npm start
 $ npm run build-win
 $ npm run build-mac
 ```
+
+以下のコマンドでビルドした後に自動的にS3へアップロードしてくれます。
+```shellsession
+$ npm run build-win-publish
+$ npm run build-mac-publish
+```
