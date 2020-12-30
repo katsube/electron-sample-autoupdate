@@ -36,12 +36,13 @@ app.whenReady().then(()=>{
 
 // ウィンドウがすべて閉じられたら
 app.on('window-all-closed', () => {
+  // macOS以外は終了
   if (process.platform !== 'darwin') {
     app.quit()
   }
 })
 
-// ウィンドウが0個の状態でアクティブになったら
+// ウィンドウが0個の状態でアクティブになったら（macOS用）
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
