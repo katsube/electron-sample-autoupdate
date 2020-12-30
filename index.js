@@ -13,7 +13,7 @@ let mainWin;
  * ウィンドウを作成
  */
 function createWindow () {
-  const mainWin = new BrowserWindow({
+  mainWin = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
