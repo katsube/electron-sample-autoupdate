@@ -1,0 +1,43 @@
+{
+  "name": "sample-autoupdate",
+  "version": "1.0.0",
+  "description": "Electron sample",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "build-mac": "electron-builder --mac --x64",
+    "build-win": "electron-builder --win --x64"
+  },
+  "author": "M.Katsube",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^10.1.2",
+    "electron-builder": "^22.8.1"
+  },
+  "build": {
+    "appId": "net.makitokatsube.app.autoupdate",
+    "afterSign": "scripts/notarize.js",
+    "files": [
+      "package.json",
+      "index.js",
+      "index.html"
+    ],
+    "mac": {
+      "target": "dmg",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
+    },
+    "dmg": {
+      "sign": false
+    },
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "electron-notarize": "^1.0.0"
+  }
+}
