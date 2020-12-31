@@ -1,7 +1,7 @@
 # Electron Sample - 自動アップデート
 
 ## 解説ページ
-* []()
+* [[Electron] 自動アップデートに対応する – autoUpdater](https://blog.katsubemakito.net/nodejs/electron/autoupdater)
 
 ## 準備
 Gitでリポジトリを取得します。

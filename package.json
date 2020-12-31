@@ -1,6 +1,6 @@
 {
   "name": "sample-autoupdate",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Electron auto update sample",
   "main": "index.js",
   "scripts": {
